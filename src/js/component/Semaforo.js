@@ -1,137 +1,86 @@
 import React from "react";
 
 export class Semaforo extends React.Component {
-    constructor(){
-        super();
-        this.state = {
-            Rojo: false,
-            Amarillo : false,
-            Verde : false
-        }
-        
+	constructor() {
+		super();
+		this.state = {
+			Rojo: false,
+			Amarillo: false,
+			Verde: false
+		};
+		this.brillaAmarillo = this.brillaAmarillo.bind(this);
+		this.brillaRojo = this.brillaRojo.bind(this);
+		this.brillaVerde = this.brillaVerde.bind(this);
+		this.estilo = this.estilo.bind(this);
+	}
 
-    }
+	brillaRojo() {
+		let r = true;
+		let a = false;
+		let v = false;
 
-    brillaRojo (){
-        let r = true;
-        let a = false;
-        let v = false;
-        
-        this.setState({ 
-            Rojo: r,
-            Amarillo: a,
-            Verde: v
-         });
-    }
+		this.setState({
+			Rojo: r,
+			Amarillo: a,
+			Verde: v
+		});
+	}
 
-    brillaAmarillo (){
-        let r = false;
-        let a = true;
-        let v = false;
-        
-        this.setState({ 
-            Rojo: r,
-            Amarillo: a,
-            Verde: v
-         });
-    }
+	brillaAmarillo() {
+		let r = false;
+		let a = true;
+		let v = false;
 
-    brillaVerde (){
-        let r = false;
-        let a = false;
-        let v = true;
-        
-        this.setState({ 
-            Rojo: r,
-            Amarillo: a,
-            Verde: v
-         });
-    }
+		this.setState({
+			Rojo: r,
+			Amarillo: a,
+			Verde: v
+		});
+	}
 
-    render() {
-        if (this.state.Rojo===true){
-            return(
-                <div>
-                <button
-						type="button"
-						className="btn btn-light"
-						style={estiloBoton}
-						onClick={this.stopTimer}>rojo
-						
-					</button>
+	brillaVerde() {
+		let r = false;
+		let a = false;
+		let v = true;
+
+		this.setState({
+			Rojo: r,
+			Amarillo: a,
+			Verde: v
+		});
+	}
+
+	estilo() {
+		if (this.state.Amarillo === false) {
+			return "estiloBrillo";
+		} else {
+			return "";
+		}
+	}
+
+	render() {
+		return (
+			<div
+				className="d-flex flex-column align-items-center justify-content-center"
+				id="semaforo">
+				<div>
 					<button
-						type="button"
-						className="btn btn-outline-light"
-						style={estiloBoton}
-						onClick={this.resumeTimer}>verde
-						
-					</button>
+						id={this.state.Rojo ? "estiloBrillo" : null}
+						className="btn btn-danger"
+						onClick={this.brillaRojo}></button>
+				</div>
+				<div>
 					<button
-						type="button"
-						className="btn btn-outline-light"
-						style={estiloBoton}
-						onClick={this.resetTimer}>
-						amarillo
-					</button>
-            </div>
-            );
-        }
-
-        else if (this.state.Amarillo===true){
-            return(
-                <div>
-                <button
-						type="button"
-						className="btn btn-outline-light"
-						style={estiloBoton}
-						onClick={this.stopTimer}>
-						rojo
-					</button>
+						id={this.state.Amarillo ? "estiloBrillo" : null}
+						className="btn btn-warning"
+						onClick={this.brillaAmarillo}></button>
+					<div></div>
 					<button
-						type="button"
-						className="btn btn-light"
-						style={estiloBoton}
-						onClick={this.resumeTimer}>
-						verde
-					</button>
-					<button
-						type="button"
-						className="btn btn-outline-light"
-						style={estiloBoton}
-						onClick={this.resetTimer}>
-						amarillo
-					</button>
-            </div>
-            );
-        }
-
-        else if (this.state.Amarillo===true){
-            return(
-                <div>
-                <button
-						type="button"
-						className="btn btn-outline-light"
-						style={estiloBoton}
-						onClick={this.stopTimer}>
-						rojo
-					</button>
-					<button
-						type="button"
-						className="btn btn-outline-light"
-						style={estiloBoton}
-						onClick={this.resumeTimer}>
-						verde
-					</button>
-					<button
-						type="button"
-						className="btn btn-light"
-						style={estiloBoton}
-						onClick={this.resetTimer}>
-						amarillo
-					</button>
-            </div>
-            );
-        }
-		
-    }
+						id={this.state.Verde ? "estiloBrillo" : null}
+						className="btn btn-success"
+						onClick={this.brillaVerde}></button>
+				</div>
+			</div>
+		);
+	}
 }
