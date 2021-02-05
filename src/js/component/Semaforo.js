@@ -11,7 +11,7 @@ export class Semaforo extends React.Component {
 		this.brillaAmarillo = this.brillaAmarillo.bind(this);
 		this.brillaRojo = this.brillaRojo.bind(this);
 		this.brillaVerde = this.brillaVerde.bind(this);
-		this.estilo = this.estilo.bind(this);
+		this.Reset = this.Reset.bind(this);
 	}
 
 	brillaRojo() {
@@ -50,35 +50,50 @@ export class Semaforo extends React.Component {
 		});
 	}
 
-	estilo() {
-		if (this.state.Amarillo === false) {
-			return "estiloBrillo";
-		} else {
-			return "";
-		}
+	Reset() {
+		let r = false;
+		let a = false;
+		let v = false;
+
+		this.setState({
+			Rojo: r,
+			Amarillo: a,
+			Verde: v
+		});
 	}
 
 	render() {
 		return (
-			<div
-				className="d-flex flex-column align-items-center justify-content-center"
-				id="semaforo">
-				<div>
-					<button
-						id={this.state.Rojo ? "estiloBrillo" : null}
-						className="btn btn-danger"
-						onClick={this.brillaRojo}></button>
+			<div>
+				<div
+					className="d-flex flex-column align-items-center justify-content-center"
+					id="semaforo">
+					<div>
+						<button
+							id={this.state.Rojo ? "estiloBrillo" : null}
+							className="btn btn-danger"
+							onClick={this.brillaRojo}></button>
+					</div>
+					<div>
+						<button
+							id={this.state.Amarillo ? "estiloBrillo" : null}
+							className="btn btn-warning"
+							onClick={this.brillaAmarillo}></button>
+					</div>
+					<div>
+						<button
+							id={this.state.Verde ? "estiloBrillo" : null}
+							className="btn btn-success"
+							onClick={this.brillaVerde}></button>
+					</div>
 				</div>
 				<div>
 					<button
-						id={this.state.Amarillo ? "estiloBrillo" : null}
-						className="btn btn-warning"
-						onClick={this.brillaAmarillo}></button>
-					<div></div>
-					<button
-						id={this.state.Verde ? "estiloBrillo" : null}
-						className="btn btn-success"
-						onClick={this.brillaVerde}></button>
+						id="reset"
+						className="btn btn-outline-light"
+						onClick={this.Reset}>
+						Reset
+					</button>
 				</div>
 			</div>
 		);
