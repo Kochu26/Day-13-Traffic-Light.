@@ -1,7 +1,7 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
 body{
-    background-color: black;
+    background-color: rgb(94, 94, 238);
 };
 
 #contenedor{
@@ -11,7 +11,7 @@ body{
 
 #semaforo{
     width: 80px;
-    background-color: rgb(117, 76, 1);
+    background-color: gray;
     border-radius: 5%;
     height: 200px;
     position: absolute;
@@ -20,7 +20,7 @@ body{
     transform: translate(-50%, -50%);
 }
 .btn{
-    border-radius: 50%;
+    border-radius: 70%;
     height: 60px;
     width: 60px;
     margin: 2px
@@ -32,7 +32,7 @@ body{
 };
 
 #reset{
-    border-radius: 0%;
+    border-radius: 10%;
     height: 50px;
     width: 80px;
     margin-top: 600%;
